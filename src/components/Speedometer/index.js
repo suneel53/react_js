@@ -7,17 +7,25 @@ class Speedometer extends Component {
   state = {count: 0}
 
   onacc = () => {
-    this.setState(prevState => {
-      console.log('acceleration by 10')
-      return {count: prevState.count + 10}
-    })
+    const {count} = this.state
+
+    if (count < 200) {
+      this.setState(prevState => {
+        console.log('acceleration applied')
+        return {count: prevState.count + 10}
+      })
+    }
   }
 
   onbrake = () => {
-    this.setState(prevState => {
-      console.log('brake applied')
-      return {count: prevState.count - 10}
-    })
+    const {count} = this.state
+
+    if (count > 0) {
+      this.setState(prevState => {
+        console.log('brake applied')
+        return {count: prevState.count - 10}
+      })
+    }
   }
 
   render() {
